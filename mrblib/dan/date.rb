@@ -3,16 +3,21 @@ module Dan
     extend self
 
     DATETIME_REGEXP = %r{
+      \A
       (?:(\d{4})[-/])?(?:(\d{1,2})[-/])?(\d{1,2})
       (?:[\ T](\d{1,2})(?::(\d{1,2})(?::(\d{1,2}))?)?)?
+      \z
     }x
-    TIME_REGEXP_PART = %r{
+    TIME_REGEXP = %r{
+      \A
       (\d{1,2})(?::(\d{1,2})(?::(\d{1,2}))?)?
+      \z
     }x
 
     def parse(text, default_time = [0, 0, 0], context = Time.now)
       case text
       when 'today'
+        # skip
       when DATETIME_REGEXP
         year = $1&.to_i 10
         month = $2&.to_i 10
