@@ -56,10 +56,10 @@ module Dan
 
       case ts.size
       when 1
-        t1 = parse(ts[0], [0, 0, 0])
+        t1 = parse(ts[0], [0, 0, 0], context)
         t2 = Time.new(t1.year, t1.month, t1.day, 23, 59, 59)
       when 2
-        t1 = parse(ts[0], [0, 0, 0])
+        t1 = parse(ts[0], [0, 0, 0], context)
         t2 = parse(ts[1], [23, 59, 59], t1)
       else
         raise Error, "invalid date range: #{text}"
